@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ExpenseService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:1732/ExpenseService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:1732/ExpenseService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:1732/ExpenseService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ExpenseTracker.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IExpenseService_SaveExpense_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveExpense" />
+  </wsdl:message>
+  <wsdl:message name="IExpenseService_SaveExpense_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveExpenseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IExpenseService_GetExpensesByDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExpensesByDate" />
+  </wsdl:message>
+  <wsdl:message name="IExpenseService_GetExpensesByDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExpensesByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IExpenseService_GetCurrentDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentDate" />
+  </wsdl:message>
+  <wsdl:message name="IExpenseService_GetCurrentDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentDateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IExpenseService">
+    <wsdl:operation name="SaveExpense">
+      <wsdl:input wsaw:Action="http://tempuri.org/IExpenseService/SaveExpense" message="tns:IExpenseService_SaveExpense_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IExpenseService/SaveExpenseResponse" message="tns:IExpenseService_SaveExpense_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExpensesByDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IExpenseService/GetExpensesByDate" message="tns:IExpenseService_GetExpensesByDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IExpenseService/GetExpensesByDateResponse" message="tns:IExpenseService_GetExpensesByDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IExpenseService/GetCurrentDate" message="tns:IExpenseService_GetCurrentDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IExpenseService/GetCurrentDateResponse" message="tns:IExpenseService_GetCurrentDate_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IExpenseService" type="tns:IExpenseService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveExpense">
+      <soap:operation soapAction="http://tempuri.org/IExpenseService/SaveExpense" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExpensesByDate">
+      <soap:operation soapAction="http://tempuri.org/IExpenseService/GetExpensesByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentDate">
+      <soap:operation soapAction="http://tempuri.org/IExpenseService/GetCurrentDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ExpenseService">
+    <wsdl:port name="BasicHttpBinding_IExpenseService" binding="tns:BasicHttpBinding_IExpenseService">
+      <soap:address location="http://localhost:1732/ExpenseService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
